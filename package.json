@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sonar": "node scanner.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^6.0.8",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "sonarqube-scanner": "^2.8.1"
   }
 }
