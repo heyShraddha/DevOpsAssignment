@@ -22,8 +22,7 @@ pipeline {
                      modules.each { item -> 
                         dir("${item}"){
                         print("Testing Code for $item")
-                        bat "npm run sonar"    
-                    
+                        // bat "npm run sonar" 
                         }
                     }
                 }
@@ -45,6 +44,7 @@ pipeline {
         stage('Pushing Docker Images to Registery'){
             steps {
                 script {
+                    bat "docker login -u heyshraddha -p QAZwsx@#12"
                      modules.each { item -> 
                         dir("${item}"){
                         print("Pushing Docker Images to Registery for $item")
