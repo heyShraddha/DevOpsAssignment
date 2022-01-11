@@ -1,0 +1,22 @@
+{
+    "elasticsearch":{
+        "url":"http://localhost:",
+        "port":"9200",
+        "elasicsearchIndices":{
+            "CARD":{
+                "index":"card",
+                "type":"CARD",
+                "collectionName":"card"
+            }
+        }
+    },
+    "mongodb":{
+        "url":"mongodb://",
+        "username":"",
+        "password":"",
+        "server_ip":"137.71.42.119",
+        "local_server_ip":"localhost",
+        "port":"27017",
+        "databaseName":"mongoDatabase"
+    }
+}
