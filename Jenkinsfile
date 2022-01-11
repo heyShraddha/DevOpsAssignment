@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Dockerizing microservices'){
+        stage('Dockerizing'){
             steps {
                 script {
                      modules.each { item -> 
@@ -40,7 +40,7 @@ pipeline {
                 }
             }
         }
-        stage('Pushing Docker Images to Registery'){
+        stage('Pushing Docker Images'){
             steps {
                 script {
                     bat "docker login -u heyshraddha -p QAZwsx@#123"
@@ -54,19 +54,19 @@ pipeline {
                 }
             }
         }
-        stage('Deploying Micro Services to Kubernetes') {
+        stage('Deploying to Kubernetes') {
             steps {
                 script {
                     bat "kubectl version"
                      modules.each { item -> 
                         print("Deploying Micro Services to Kubernetes $item")
-                        // bat "kubectl create deployment $item-cluster --image heyshraddha/$item" 
-                        // bat "kubectl scale deployment $item-cluster --replicas 2"
-                        // bat "kubectl expose deployment $item-cluster --type=NodePort --port 3000"
+                        bat "kubectl create deployment $item-cluster --image heyshraddha/$item" 
+                        bat "kubectl scale deployment $item-cluster --replicas 2"
+                        bat "kubectl expose deployment $item-cluster --type=NodePort --port 3000"
                     }
                     sleep(60);
-                    // bat "kubectl get services"
-                    // bat "kubectl get deployment"
+                    bat "kubectl get services"
+                    bat "kubectl get deployment"
                 }
             }
         }
