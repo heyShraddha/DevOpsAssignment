@@ -61,10 +61,14 @@ pipeline {
                      modules.each { item -> 
                         dir("${item}"){
                         print("Deploying Micro Services to Kubernetes $item")
-                        // bat "npm run sonar"   
-                    
+                        bat "kubectl create deployment $item --image heyshraddha/$item" 
+                        bat "kubectl scale deployment $item --replicas 2"
+                        bat "kubectl expose deployment $item --type=NodePort --port 3000"
                         }
                     }
+                    sleep(60);
+                    bat "kubectl get services"
+                    bat "kubectl get deployment"
                 }
             }
         }
