@@ -1,4 +1,4 @@
-def modules = ['all-post-service', 'edit-post-service'];
+def modules = ['all-post-service', 'edit-post-service', 'create-post-service', 'like-post-service', 'memories-ui'];
 pipeline {
     agent any
     stages {
@@ -9,7 +9,6 @@ pipeline {
                         dir("${item}"){
                             print("Building Code for $item")
                             bat "npm install"
-                            // bat "npm run build"
                         }
                     }
                 }
@@ -22,7 +21,7 @@ pipeline {
                      modules.each { item -> 
                         dir("${item}"){
                         print("Testing Code for $item")
-                        // bat "npm run sonar" 
+                        bat "npm run sonar" 
                         }
                     }
                 }
@@ -61,13 +60,13 @@ pipeline {
                     bat "kubectl version"
                      modules.each { item -> 
                         print("Deploying Micro Services to Kubernetes $item")
-                        bat "kubectl create deployment $item-cluster --image heyshraddha/$item" 
-                        bat "kubectl scale deployment $item-cluster --replicas 2"
-                        bat "kubectl expose deployment $item-cluster --type=NodePort --port 3000"
+                        // bat "kubectl create deployment $item-cluster --image heyshraddha/$item" 
+                        // bat "kubectl scale deployment $item-cluster --replicas 2"
+                        // bat "kubectl expose deployment $item-cluster --type=NodePort --port 3000"
                     }
                     sleep(60);
-                    bat "kubectl get services"
-                    bat "kubectl get deployment"
+                    // bat "kubectl get services"
+                    // bat "kubectl get deployment"
                 }
             }
         }
