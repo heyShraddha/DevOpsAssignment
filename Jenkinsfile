@@ -58,13 +58,12 @@ pipeline {
         stage('Deploying Micro Services to Kubernetes') {
             steps {
                 script {
+                    bat "kubectl version"
                      modules.each { item -> 
-                        dir("${item}"){
                         print("Deploying Micro Services to Kubernetes $item")
                         bat "kubectl create deployment $item-cluster --image heyshraddha/$item" 
                         bat "kubectl scale deployment $item-cluster --replicas 2"
                         bat "kubectl expose deployment $item-cluster --type=NodePort --port 3000"
-                        }
                     }
                     sleep(60);
                     bat "kubectl get services"
