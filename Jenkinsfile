@@ -44,7 +44,7 @@ pipeline {
         stage('Pushing Docker Images to Registery'){
             steps {
                 script {
-                    bat "docker login -u heyshraddha -p QAZwsx@#12"
+                    bat "docker login -u heyshraddha -p QAZwsx@#123"
                      modules.each { item -> 
                         dir("${item}"){
                         print("Pushing Docker Images to Registery for $item")
